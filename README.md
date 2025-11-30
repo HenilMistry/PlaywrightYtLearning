@@ -26,6 +26,24 @@ The installation steps are very simple.
 3. Multiple Views Support
 4. Mobile Emulation Support
 
+# If you're using This Repo
+
+If you're using this repository, to continue smoothly make sure to enter following commands.
+
+1. To install the node modules
+
+```
+npm i
+```
+
+2. To configure playwright browsers.
+
+```
+npx playwright install
+```
+
+After that you can start using Playwright as if it's normal installation.
+
 # Run Example Tests
 
 You can use below command to run example test but by default below command will run all tests which are there inside Test folder name. By default tests run in headless mode, in parallel across Chromium, Firefox and Webkit. Output and aggregate results display in the terminal.

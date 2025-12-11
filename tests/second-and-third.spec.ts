@@ -13,7 +13,7 @@ test.describe('Home Page GUI Tests', () => {
         // NOTE: this is not needed though... (READ NOTE)
         // assertion for title's visibility -> matcher : toBeVisible()
         // locating by the id of the element `titleOfApp`
-        await expect(page.locator("#titleOfApp")).toBeVisible();
+        await expect(page.locator("#titleOfAp")).toBeVisible();
 
         // NOTE: This will automatically assert the visibility before text assertion
         // assertion for title text -> matcher : toHaveText()

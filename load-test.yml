@@ -1,0 +1,22 @@
+config:
+  target: https://henilmistry.github.io/AristaLabRequestor/
+  engines:
+    playwright: {}
+  processor: './test-functions/home-page-ui.ts'
+  phases:
+    - duration: 60
+      arrivalRate: 1
+      rampTo: 5
+      name: Warm up phase
+    - duration: 60
+      arrivalRate: 5
+      rampTo: 10
+      name: Ramp up load phase
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 30
+      name: Spike phase
+
+scenarios:
+  - engine: playwright
+    testFunction: homePageValidation

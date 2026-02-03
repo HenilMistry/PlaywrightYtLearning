@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { homePageValidation } from "../test-functions/home-page-ui";
 
 // test hook: describe -> to group the test cases
 test.describe('Home Page GUI Tests', () => {
@@ -10,22 +11,7 @@ test.describe('Home Page GUI Tests', () => {
     });
 
     test('TC1: Verify the home page', async({ page }) => {
-        // NOTE: this is not needed though... (READ NOTE)
-        // assertion for title's visibility -> matcher : toBeVisible()
-        // locating by the id of the element `titleOfApp`
-        await expect(page.locator("#titleOfAp")).toBeVisible();
-
-        // NOTE: This will automatically assert the visibility before text assertion
-        // assertion for title text -> matcher : toHaveText()
-        await expect(page.locator("#titleOfApp"))
-            .toHaveText(new RegExp("welcome to aristalabrequestor", "i"));
-
-        // assertion for child nodes -> matcher : toHaveCount()
-        // locating by the label of the element `Basic example`
-        await expect(page.getByLabel('Basic example').getByRole("button")).toHaveCount(6);
-
-        // asserting for text -> matcher : toHaveText()
-        await expect(page.locator("#label_info")).toHaveText(new RegExp("Select some tool", "i"));
+        await homePageValidation(page);
     });
 
     test('TC2: Verifies the node tool', async({ page }) => {

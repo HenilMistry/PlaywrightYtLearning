@@ -12,6 +12,6 @@
     "@types/node": "^24.9.1"
   },
   "dependencies": {
-    "artillery": "^2.0.29"
+    "artillery": "^2.0.30"
   }
 }

@@ -1,6 +1,7 @@
 import { expect, Page } from "@playwright/test";
 
 export async function homePageValidation(page: Page) {
+    await page.goto('https://henilmistry.github.io/AristaLabRequestor/');
     // NOTE: this is not needed though... (READ NOTE)
     // assertion for title's visibility -> matcher : toBeVisible()
     // locating by the id of the element `titleOfApp`

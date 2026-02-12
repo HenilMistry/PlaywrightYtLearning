@@ -1,36 +1,27 @@
-name: Artillery Load Test Trigger
+name: Artillery Playwright Test
 
 on:
   push:
-    branches:
-      - main
- 
+    branches: [ main ]
+
 jobs:
-  artillery:
+  load-test:
     runs-on: ubuntu-latest
- 
+
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-            node-version: lts/*
-            
+          node-version: 18
+
       - name: Install dependencies
         run: npm install
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
- 
-      - name: Execute load tests
-        uses: artilleryio/action-cli@v1
-        with:
-          command: run artillery-test.yml --output ./report.json --name TestFromYouTubeWithPlaywright --record --key ${{ secrets.API_KEY_ARTILLERY }}
+        run: npx playwright install --with-deps
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        if: always()
-        with: 
-          name: artillery-report
-          path: ./report.json
+      - name: Run Artillery Test
+        run: npx artillery run artillery-test.yml --output ./report.json --name TestFromYouTubeWithPlaywright --record --key ${{ secrets.API_KEY_ARTILLERY }}

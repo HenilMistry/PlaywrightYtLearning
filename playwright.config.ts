@@ -1,12 +1,8 @@
-import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -22,7 +18,25 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html', {open: 'never'}],
+    ['playwright-notifier', {
+      sendResults: 'on-failure',
+      ciOnly: false,
+      channels: {
+        webhook: {
+          url: process.env.DISCORD_WEBHOOK || '',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        },
+        // email: {
+        //   // SMTP Configuration
+        // }
+      }
+    }]
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */

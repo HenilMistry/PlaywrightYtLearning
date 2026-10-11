@@ -9,9 +9,11 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
-    "@types/node": "^24.9.1"
+    "@types/node": "^24.19.2"
   },
   "dependencies": {
-    "artillery": "^2.0.29"
+    "artillery": "^2.0.34",
+    "playwright-notifier": "^1.1.0",
+    "playwright-reporter": "^1.0.0"
   }
 }

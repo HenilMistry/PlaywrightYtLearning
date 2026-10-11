@@ -19,10 +19,9 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html', {open: 'never'}],
+    ['list'],
     ['playwright-notifier', {
       sendResults: 'always',
-      ciOnly: false,
       channels: {
         webhook: {
           url: process.env.DISCORD_WEBHOOK,
@@ -30,10 +29,7 @@ export default defineConfig({
           headers: {
             'Content-Type': 'application/json'
           },
-        },
-        // email: {
-        //   // SMTP Configuration
-        // }
+        }
       }
     }]
   ],

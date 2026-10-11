@@ -21,11 +21,11 @@ export default defineConfig({
   reporter: [
     ['html', {open: 'never'}],
     ['playwright-notifier', {
-      sendResults: 'on-failure',
+      sendResults: 'always',
       ciOnly: false,
       channels: {
         webhook: {
-          url: process.env.DISCORD_WEBHOOK || '',
+          url: process.env.DISCORD_WEBHOOK,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

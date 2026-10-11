@@ -21,7 +21,7 @@ test.describe('Home Page GUI Tests', () => {
 
         // locating by role 'button'
         // action / interaction -> click
-        await page.getByRole('button', { name: 'Game Too' }).click();
+        await page.getByRole('button', { name: 'Node Tool' }).click();
         
         // assertion for text -> matcher : toHaveText()
         await expect(page.locator('#label_info'))

@@ -54,11 +54,6 @@ export default class DiscordReporter implements Reporter {
         ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
         : undefined;
 
-        const failures = failed
-        .slice(0, 5)
-        .map(t => `• ${t.title}`)
-        .join('\n');
-
         const body = {
         embeds: [{
             title: `${result.status === 'passed' ? '✅' : '❌'} ${this.options.projectName ?? 'Playwright'}: ${result.status}`,
@@ -85,7 +80,7 @@ export default class DiscordReporter implements Reporter {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),
         });
-        
+
         if (!res.ok) console.error(`Discord webhook failed: ${res.status} ${await res.text()}`);
     }
 }

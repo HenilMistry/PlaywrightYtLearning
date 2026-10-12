@@ -20,9 +20,15 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html'],
-    ['./Reporters/discord-reporter.ts', {
-      webhookUrl: process.env.DISCORD_WEBHOOK,
+    ['/Users/henil/VsCodeProjects/playwright-notifier/dist/index.js', {
       projectName: 'Arista Lab Requestor',
+      ciOnly: false,
+      channels: {
+        discord: {
+          webhookUrl: process.env.WEBHOOK_DISCORD,
+          username: '_m.henu_'
+        }
+      }
     }]
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */

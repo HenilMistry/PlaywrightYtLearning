@@ -21,7 +21,7 @@ export default defineConfig({
   reporter: [
     ['html'],
     ['./Reporters/discord-reporter.ts', {
-      webhookUrl: process.env.DISCORD_WEBHOOK,
+      webhookUrl: process.env.WEBHOOK_DISCORD,
       projectName: 'Arista Lab Requestor',
     }]
   ],

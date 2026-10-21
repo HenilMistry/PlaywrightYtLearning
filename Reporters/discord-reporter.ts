@@ -64,7 +64,7 @@ export default class DiscordReporter implements Reporter {
             { name: 'Failed', value: String(failed.length), inline: true },
             { name: 'Flaky', value: String(flaky.length), inline: true },
             { name: 'Skipped', value: String(skipped.length), inline: true },
-                ...(failed.length
+            ...(failed.length
                 ? [{ name: `${failed.length} failed`, value: this.formatList('failed', failed) }]
                 : []),
             ...(flaky.length
